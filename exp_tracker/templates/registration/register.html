@@ -1,35 +1,47 @@
-{%load static%}
-<head>  
-    <link rel="stylesheet" type="text/css" href="{% static 'css/login_styles.css%}"
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign Up</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login_styles.css' %}">
 </head>
+<body>
+    <div class="container">
+        {% if form.errors %}
+            <p style="color:red;">Please correct the errors below.</p>
+        {% endif %}
 
-{% block content %}
-    <form method="POST">    
-        <div class = "container">
-            <div class = "form-container">
-                <div class ="form">
-                    <h2 style="text-align: center;">    
-                        Sign Up
-                    </h2>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-container">
+                <h2 style="text-align:center;">Sign Up</h2>
+
+                <div class="form-group">
                     {{ form.username.label_tag }}
                     <br>
-                    {{ form.password.label_tag }}
+                    {{ form.username }}
+                    {{ form.username.errors }}
+                </div>
+
+                <div class="form-group">
+                    {{ form.password1.label_tag }}
                     <br>
-                    {{ form.password }}
-                    <br>
+                    {{ form.password1 }}
+                    {{ form.password1.errors }}
+                </div>
+
+                <div class="form-group">
                     {{ form.password2.label_tag }}
                     <br>
-                    {{ form.password2.label_tag}}
-                </div> 
-                <br>  
-                <div class = "button-container">
-                    <button class = "btn btn-primary" type="submit">
-                        Register  
-                    </button>  
-
+                    {{ form.password2 }}
+                    {{ form.password2.errors }}
                 </div>
-            </div>   
 
-        </div>
-    </form>
-{% endblock %}
+                <div class="button-container">
+                    <button class="btn btn-primary" type="submit">Register</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

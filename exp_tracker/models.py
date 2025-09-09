@@ -33,7 +33,7 @@ def calculate_monthly_expense(self):
             monthly_rate = self.interest /12/100
             monthly_expense =(self.amounnt * monthly_rate)/ (1- (1+monthly)** -months)
     else:
-        return self.montlhy_expense
+        return self.montlhy_expenses
     
 
 
